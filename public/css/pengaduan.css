@@ -1,0 +1,129 @@
+html {
+    background-color: #f4f4f4;
+}
+
+body {
+    background-color: #f4f4f4;
+
+}
+
+nav {
+    /* position: fixed; */
+    top: 0;
+    width: 100%;
+    background-color: #f4f4f400;
+    transition: all 1s;
+    z-index: 99;
+
+}
+
+
+.scrolled {
+    background-color: #2880ce;
+}
+
+.scrolled .nav-link {
+    color: #ffffff;
+}
+
+
+nav li {
+    list-style: none;
+    float: right;
+}
+
+.card {
+    position: center;
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 5.7px 5.3px rgba(0, 0, 0, 0.048),
+        0 11.5px 10px rgba(0, 0, 0, 0.06),
+        0 19.3px 17.9px rgba(0, 0, 0, 0.069),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.082),
+        0 90px 80px rgba(0, 0, 0, 0.12);
+
+}
+
+
+.pengaduan-form {
+    z-index: 99;
+
+
+}
+
+
+
+.background {
+    line-height: 150%;
+    text-align: center;
+    height: 20vh;
+    width: 100%;
+    z-index: 98;
+
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+
+}
+
+
+.judul-form {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    color: #2880ce;
+    z-index: 99;
+    margin-top: 85px;
+ 
+    font-weight: 700;
+    line-height: 64px;
+  
+ 
+
+}
+
+.btnlogin {
+    color: #2880ce;
+}
+
+.scrolled .btn {
+    color: #ffffff;
+}
+
+.navbrand {
+    font-family: 'bebas neue';
+    font-size: 35px;
+}
+
+.navbar {
+
+    padding: 0;
+}
+
+.textform {
+
+    color: #2880ce;
+
+
+}
+
+.judul-section {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    color: #2880ce;
+    margin-top: 20px;
+    margin-bottom: 3%;
+    
+}
+
+.count-laporan {
+    background-color: #2880ce;
+    padding: 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.section-tutor {
+    margin-top: 9%;
+}

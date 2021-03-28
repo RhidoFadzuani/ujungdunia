@@ -1,0 +1,162 @@
+/* HOME */
+
+/* NAVBAR */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1291e683;
+    transition: all 1s;
+    z-index: 99;
+
+}
+
+.main-nav {
+
+  float: right;
+  list-style: none;
+  padding-top: 16px;
+  /* margin-top: 15px; */
+
+}
+
+.main-nav li {
+  display: inline-block;
+  padding: 2px 9px;
+  font-size: 20px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+
+  opacity: 70;
+  padding: 3px 0;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+  color:#155f9183;
+
+
+}
+
+.logo {
+  position: relative;
+  margin-top: 7px;
+  margin-bottom: 3px;
+  width: 120px;
+  height: auto;
+  float: left;
+}
+
+
+/* background HOME */
+
+.background{
+  line-height: 150%;
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/home.jpg);
+
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+
+}
+
+.content-title {
+  font-family: 'bebas';
+  font-size: 70px;
+  position: absolute;
+  top: 47%;
+  left: 10%;
+  color: rgb(255, 0, 0);
+  /* transform: translate(-50%, -50%); */
+}
+
+.content-title a {
+  color: rgb(255, 0, 0);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* tutorial section */
+
+h2 {
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  margin-top: -20px;
+
+}
+
+h2:after {
+  display: block;
+  height: 2px;
+  background-color: #001aff;
+  content: ' ';
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.langkah {
+	background-color: #f4f4f4;	
+}
+
+.judul-tutor{
+	font-size: 100%;
+	margin-bottom: 10px;
+	font-weight: 100;
+	color: #e67e22;
+}
+
+.judul-tutor span{
+	font-size: 5%;
+}
+
+
+.box-tutor{
+	background-color: #FFF;
+	border-radius: 5px;
+	width: 90%;
+	margin-left: 5%;
+	box-shadow: 0 2px 2px #ccc;
+
+}
+
+
+.box-tutor div{
+	padding: 15px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.box-tutor div:first-child{
+	background-color: #fcfcfc;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.box-tutor div:last-child{
+	text-align: center;
+	border :0 ;
+}
+
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}

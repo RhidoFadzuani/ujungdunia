@@ -22,7 +22,7 @@ nav {
     background-color: #2880ce;
 }
 
-.scrolled .nav-link {
+.nav-link {
     color: #ffffff;
 }
 
@@ -35,18 +35,22 @@ nav li {
 .card {
     position: center;
     box-shadow:
-        0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-        0 5.7px 5.3px rgba(0, 0, 0, 0.048),
-        0 11.5px 10px rgba(0, 0, 0, 0.06),
-        0 19.3px 17.9px rgba(0, 0, 0, 0.069),
-        0 41.8px 33.4px rgba(0, 0, 0, 0.082),
-        0 90px 80px rgba(0, 0, 0, 0.12);
+  0 1px 2.2px rgba(0, 0, 0, 0.011),
+  0 2.4px 5.3px rgba(0, 0, 0, 0.016),
+  0 4.5px 10px rgba(0, 0, 0, 0.02),
+  0 8px 17.9px rgba(0, 0, 0, 0.024),
+  0 15px 33.4px rgba(0, 0, 0, 0.029),
+  0 36px 80px rgba(0, 0, 0, 0.04)
+;
+
 
 }
 
 
 .pengaduan-form {
     z-index: 99;
+    margin-left: 21%;
+
 
 
 }
@@ -70,30 +74,39 @@ nav li {
 
 
 .judul-form {
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'bebas neue';
     text-align: center;
-    color: #2880ce;
+    color: #f4f4f4;
     z-index: 99;
-    margin-top: 85px;
+    margin-top: 1px;
+    margin-bottom: 25px;
  
-    font-weight: 700;
+    
     line-height: 64px;
-  
- 
-
+   
 }
+
 
 .btnlogin {
     color: #2880ce;
 }
 
-.scrolled .btn {
+.btn {
     color: #ffffff;
 }
 
 .navbrand {
     font-family: 'bebas neue';
     font-size: 35px;
+    margin-left: 75px;
+    
+
+}
+
+.navbrand img{
+    width: 26px;
+    height: 30px;
+    margin-top: 10%;
 }
 
 .navbar {
@@ -103,13 +116,13 @@ nav li {
 
 .textform {
 
-    color: #2880ce;
+    color: #1a2351;
 
 
 }
 
 .judul-section {
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'bebas neue';
     text-align: center;
     color: #2880ce;
     margin-top: 20px;
@@ -118,6 +131,7 @@ nav li {
 }
 
 .count-laporan {
+    background-image: url(/public/img/tutor1.png);
     background-color: #2880ce;
     padding: 40px;
     text-align: center;
@@ -125,5 +139,26 @@ nav li {
 }
 
 .section-tutor {
-    margin-top: 9%;
+    margin-top: 7%;
+}
+
+ .btn-outline-primary {
+    border-color: #ffffff;
+
+}
+
+.nav-item{
+    margin-right: 40px;
+}
+
+.carousel-item{
+    height: 80vh;
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
 }

@@ -20,7 +20,13 @@ Route::get('/signin', 'AuthController@formLogin')->name('formLogin');
 Route::post('/login', 'AuthController@Login')->name('Login');
 Route::get('/logout', 'AuthController@logout')->name('Logout');
 Route::get('/admin/logout', 'DashboardController@LogoutAdmin')->name('LogoutAdmin');
+Route::get('laporan/cetak/{from}/{to}', 'LaporanController@cetakLaporan')->name('laporan.cetakLaporan');
+Route::get('GetSubCatAgainstMainCatEdit/{id}', 'CauseController@GetSubCatAgainstMainCatEdit');
 
+Route::post('/updateprofil/{nik}', 'ProfilController@updateProfile')->name('update.editprofil');
+Route::get('/editprofil', 'ProfilController@editprofil')->name('user.editprofil');
+Route::post('/profil/{nik}', 'ProfilController@profil')->name('user.profil');
+Route::get('/profil', 'ProfilController@profil')->name('user.profil');
 Route::get('/admin', 'PetugasController@loginformpetugas');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::post('/loginpetugas', 'PetugasController@loginpetugas')->name('loginPetugas');

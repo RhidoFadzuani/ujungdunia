@@ -12,7 +12,7 @@ class Desa extends Model
 
     public function desa()
     {   
-        return $this->hasMany('App\kecamatan', 'kode', 'kecamatan');
+        return $this->hasMany('App\kecamatan', 'id', 'kecamatan');
     
     }
 }

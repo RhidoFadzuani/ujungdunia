@@ -35,8 +35,13 @@
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-        <label for="inputPassword">Password</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+        <label for="password">Password</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="confirm_password" class="form-control" name="password" placeholder="Password" required>
+        <label for="confirm_password">Password</label>
     </div>
 
 
@@ -54,4 +59,23 @@
     @endif
 
 
+    @endsection
+
+    @section('js')
+    <script>
+
+        var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+        
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
     @endsection

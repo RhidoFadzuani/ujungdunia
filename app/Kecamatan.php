@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Kecamatan extends Model
 {
     protected $table = 'kecamatan';
-    protected $primaryKey = 'kode';
+    protected $primaryKey = 'id';
 
     public function desa()
     {   
-        return $this->hasOne('App\Desa', 'Kode', 'Desa');
+        return $this->hasOne('App\Desa', 'id_provinsi', 'Desa');
     
     }
 }

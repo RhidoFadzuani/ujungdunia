@@ -4435,7 +4435,7 @@ input[type=button].btn-block {
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 2px 7px;
 }
 
 .nav-link:hover,

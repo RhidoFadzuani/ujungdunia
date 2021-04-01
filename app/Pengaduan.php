@@ -20,6 +20,7 @@ class Pengaduan extends Model
         'desa',
         'foto',
         'status',
+        'tanggapan'
     ];
 
     protected $dates = [
@@ -35,19 +36,24 @@ class Pengaduan extends Model
    
     public function kec()
     {
-        return $this->hasOne('App\Kecamatan', 'kode', 'kecamatan');
+        return $this->hasOne('App\Kecamatan', 'id', 'kecamatan');
     
     }
 
     public function des()
     {
-        return $this->hasOne('App\Desa', 'kode_desa', 'desa');
+        return $this->hasOne('App\Desa', 'id_desa', 'desa');
     
     }
 
     public function tanggapan()
     {   
-        return $this->hasOne('App\Tanggapan', 'id_petugas', 'id_petugas');
+        return $this->hasOne('App\Tanggapan', 'id_pengaduan', 'id_pengaduan', 'nama_petugas');
+    
+    }
+    public function petugas()
+    {   
+        return $this->hasOne('App\Petugas', 'id_petugas', 'nama_petugas');
     
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengaduan;
+use PDF;
 
 class LaporanController extends Controller
 {
@@ -22,11 +23,12 @@ class LaporanController extends Controller
         return view('Admin.laporan.laporan', ['pengaduan' => $pengaduan, 'from' => $from, 'to' => $to]);
     }
 
-    // public function cetakLaporan($from, $to)
-    // {
-    //     $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$from, $to])->get();
+    public function cetakLaporan($from, $to)
+    {
+        $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$from, $to])->get();
 
-    //     $pdf = PDF::loadView('Admin.Laporan.cetak', ['pengaduan' => $pengaduan]);
-    //     return $pdf->download('laporan-pengaduan.pdf');
-    // }
+        // return view('admin.laporan.cetak',['pengaduan' => $pengaduan]);
+        $pdf = PDF::loadView('admin.laporan.cetak', ['pengaduan' => $pengaduan]);
+        return $pdf->download('laporan-pengaduan.pdf');
+    }
 }

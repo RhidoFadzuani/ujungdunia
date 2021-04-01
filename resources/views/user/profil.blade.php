@@ -1,221 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.navbar')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LAWAS-laporan Warga Subang</title>
-    <link rel="stylesheet" href="{{asset("css/app.css")}}">
-    <link rel="stylesheet" href="{{asset("css/pengaduan.css")}}">
-</head>
+@section('css')
+<style>
+    .profil-card {
+        margin-top: 2px;
+        justify-content: center;
+        font-family: 'Open Sans Condensed', sans-serif;
+        width: 35rem;
+        margin-left: 19%;
+    }
 
-<body>
+    .btn {
+        width: 70px;
+        justify-content: center;
+        margin-bottom: 7px;
+        margin-left: 87%;
 
+    }
 
+   
+    h4 {
+        margin-top: 3%;
+        margin-left: 42%;
+    }
 
-    <div class="background">
-        <div class="judul-form">
-            <h1>Layanan Pengaduan Masyarakat Subang</h1>
-            <h2>Salurkan Aspirasi Warga Subang</h2>
-        </div>
-        <img src="{{asset("img/asset2.png")}}" class="img-fluid" alt="...">
-    </div>
-    <br>
+    .status-pengaduan {
+        margin-top: 3%;
+        justify-content: center;
+        font-family: 'Open Sans Condensed', sans-serif;
+        width: 35rem;
+        margin-left: 19%;
+    }
 
+    .gambar-lampiran {
+        width: 16rem;
+        height: 12rem;
+        padding: 2px 2px;
+    }
 
+    .card-body p {
+     margin-bottom: 2px;
+    }
 
-    <div class="nav-pengaduan">
-        <nav class="navbar navbar-light fixed-top">
-            <div class="container">
-                <div class="navbrand">
-                    <a class="nav-link ml-5" href="#" ">
-                     LAWAS
-                    </a>
-            </div>
+    .laporan{
+        
+    }
+
+    .card-title {
+        margin-bottom: 0px;
+    }
+
+    .tanggal-pengaduan {
+        margin-bottom: 0px;
+        margin-left: 25px;
+        margin-top: 7px;
+    }
+    .lokasi {
+        display: flex;
+        margin-left: 25px;
+        margin-top: 60px;
+        margin-bottom: 0px;
+        position: relative;
+        z-index: 99;
+    }
+    .lokasi p {
+       margin-bottom: 0px;
+    }
+
+    
+   
+    .des {
+        margin-right: 6px;
+        
+    }
+    .card-body{
+        padding: 3px;
+        margin-left: 25px;
+    }
+</style>
+@endsection
+
+@section('dropdown')
+<div class="dropdown-menu">
+    <a class="dropdown-item" href="{{route ("home1")}}">Buat laporan</a>
+    <a class="dropdown-item" href="#laporan">lihat Laporan</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="{{route("Logout")}}">logout</a>
+</div>
+@endsection
+
+@section('body')
+<div class="background">
+    <img src="{{asset("img/asset2.png")}}" class="img-fluid" alt="...">
+</div>
+<div class="container">
+    <div class="profil-card">
+        <div class="card">
+
+            <h4>PROFIL</h4>
+
             @if (Auth::guard('user')->check())
-                       <li class=" nav-item dropdown">
+            <div class="card-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>NAMA</th>
+                            <td>:</td>
+                            <td>{{ auth('user')->user()->nama }}</td>
+                        </tr>
+                        <tr>
+                            <th>NIK</th>
+                            <td>:</td>
+                            <td>{{ auth('user')->user()->nik }}</td>
+                        </tr>
+                        <tr>
+                            <th>USERNAME</th>
+                            <td>:</td>
+                            <td>{{ auth('user')->user()->username }}</td>
+                        </tr>
+                        <tr>
+                            <th>NOMOR TELEPON</th>
+                            <td>:</td>
+                            <td>{{ auth('user')->user()->telp }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="true" aria-expanded="false"> {{ auth('user')->user()->nama }} </a>
-
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Profil</a>
-                            <a class="dropdown-item" href="#">lihat Laporan</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{route("Logout")}}">logout</a>
-                        </div>
-
-
-                        </li>
-
-                        @else
-
-                        <ul class="navbar-nav mr-4 pr-1">
-                            <li class="nav-item">
-                                <div class="btnlogin">
-                                    <a href="{{route('formLogin')}}" class="btn btn-link">SIGN IN</a>
-                                    <a href="{{route('formdaftar')}}" class="btn btn-outline-primary">SIGN UP</a>
-                                </div>
-                            </li>
-                        </ul>
-                </div>
-
-                @endif
-
-        </nav>
+            <a href="{{ route('user.editprofil')}}" class="btn btn-primary">Edit</a>
+            @endif
+        </div>
     </div>
+</div>
 
-    <section class="">
-        <div class="pengaduan-form">
-            <div class="container position-relative">
-                <div class="d-flex justify-content-center">
-                    <div class="card" style="width: 35rem;">
-                        <div class="textform">
-                            <h2 class="text-center my-4">Tuliskan Aspirasi anda disini</h2>
-                        </div>
-                        <div class="card-body position-absolut">
-                            @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger">{{ $error }}</div>
-                            @endforeach
-                            @endif
-
-                            @if (Session::has('pengaduan'))
-                            <div class="alert alert-{{ Session::get('type') }}">{{ Session::get('pengaduan') }}</div>
-                            @endif
-                            <form method="POST" action="{{route('lapor')}}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="">Judul Laporan</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="judul_laporan"
-                                        aria-describedby="emailHelp">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Isi Laporan</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
-                                        name="isi_laporan"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="tanggal_kejadian">tanggal kejadian</label>
-                                    <input placeholder="tanggal kejadian" type="date" class="form-control datepicker"
-                                        name="tgl_kejadian">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">kecamatan</label>
-                                    <select class="custom-select" id="inputGroupSelect01" name="kecamatan">
-                                        <option selected>kecamatan</option>
-                                        @foreach ($kecamatan as $k => $v)
-                                        <option value="{{$v->kode}}">{{ $v->kecamatan}}</option>
-                                        @endforeach
-                                        
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Desa/Kelurahan</label>
-                                    <select class="custom-select" id="inputGroupSelect01" name="desa">
-                                        <option selected>desa/kelurahan</option>
-                                        <option value="1">subang</option>
-                                        <option value="2">dawuan</option>
-                                        <option value="3">kalijati</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" name="foto" class="form-control" name="foto">
-                                </div>
-                        </div>
-                        @if (Auth::guard('user')->check())
-                        <button type="submit" class="btn btn-primary p-2" style="">Kirim!</button>
-                        @else
-                        <a href="{{route('formdaftar')}}" class="btn btn-primary p-2">Kirim!</a>
+<div class="container">
+    <div class="laporan" id="laporan">
+            <div class="status-pengaduan">
+            @foreach ($pengaduan as $k => $v)
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        @if ($v->foto != null)
+                        <img src="{{ Storage::url($v->foto) }}" alt="{{ 'Gambar '.$v->judul_laporan }}"
+                            class="img-fluid gambar-lampiran">
                         @endif
                     </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
-
- 
-
-    <section class="section-tutor">
-        <div class="judul-section">
-        <h2 >Langkah-Langkah</h2>
-       </div>
-        <div class="container">
-            <div class="card-deck">
-                
-                <div class="card">
-                    <img src="{{asset("img/tutor1.png")}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">1.Pendaftaran</h5>
-                        <p class="card-text">lakukan pendaftaran menggunakan data yang ada di kartu tanda penduduk anda</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="{{asset("img/tutor2.png")}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">2.Tulis Pengaduan</h5>
-                        <p class="card-text">Laporkan keluhan atau aspirasi anda dengan jelas dan lengkap</p>
-                    </div>
-                </div>
-                    
-                <div class="card">
-                        <img src="{{asset("img/tutor3.png")}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">3.Proses Verifikasi</h5>
-                            <p class="card-text">Dalam 3-4 hari, laporan anda akan di verifikasi dan diteruskan ke instansi yang bersangkutan</p>
+                    <div class="col-md-8">
+                        <div class="tanggal-pengaduan">
+                            <p class="card-text"><small class="text-muted">{{ $v->tgl_pengaduan->format('d M y, h:i') }}</small></p>
                         </div>
-                </div>
-
-                <div class="card">
-                    <img src="{{asset("img/tutor4.png")}}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">4.Selesai</h5>
-                        <p class="card-text">Laporan anda akan di tindaklanjuti, hingga terselesaikan</p>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $v->judul_laporan }}</h5>
+                            <div class="status">
+                                @if ($v->status == '0')
+                                <p class="badge badge-danger">Pending</p>
+                                @elseif($v->status == 'proses')
+                                <p class="badge badge-warning text-white">{{ ucwords($v->status) }}</p>
+                                @else
+                                <p class="badge badge-success">{{ ucwords($v->status) }}</p>
+                                @endif
+                            </div>
+                            <p class="card-text">{{ $v->isi_laporan }}</p>
+                            {{-- @if ($v->tanggapan != null) --}}
+                                <p class="light">{{ $v->tanggapan->tanggapan ?? ''}}</p>
+                            {{-- @endif --}}
+                        </div>
+                           
+                            <div class="text-muted lokasi">
+                                <p class="des">{{ $v->des->desa ?? '' }},</p>
+                                <p class="kec">{{ $v->kec->kecamatan ?? '' }}</p>
+                            </div>
                     </div>
                 </div>
-                
             </div>
+            @endforeach
         </div>
-    </section>
+        {{-- <div class="row mt-5 ">
+            @foreach ($pengaduan as $k => $v)
+            <div class="col-lg-8">
+                <div class="laporan-top">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p>{{ $v->user->nama }}</p>
+        @if ($v->status == '0')
+        <p class="text-danger">Pending</p>
+        @elseif($v->status == 'proses')
+        <p class="text-warning">{{ ucwords($v->status) }}</p>
+        @else
+        <p class="text-success">{{ ucwords($v->status) }}</p>
+        @endif
+    </div>
+    <div>
+        <p>{{ $v->tgl_pengaduan->format('d M, h:i') }}</p>
+    </div>
+</div>
+</div>
+<div class="laporan-mid">
+    <div class="judul-laporan">
+        {{ $v->judul_laporan }}
+    </div>
+    <p>{{ $v->isi_laporan }}</p>
+</div>
+<div class="laporan-bottom">
+    @if ($v->foto != null)
+    <img src="{{ Storage::url($v->foto) }}" alt="{{ 'Gambar '.$v->judul_laporan }}" class="gambar-lampiran">
+    @endif
+    @if ($v->tanggapan != null)
+    <p class="mt-3 mb-1">{{ '*Tanggapan dari '. $v->tanggapan->petugas->nama_petugas }}</p>
+    <p class="light">{{ $v->tanggapan->tanggapan }}</p>
+    @endif
+</div>
+<hr>
+</div>
+@endforeach
+</div> --}}
+</div>
+</div>
 
-    <section class="my-5">
-        <div class="count-laporan">
-            <h2>Jumlah laporan sekarang</h2>
-            <h3>{{$laporan ?? ''}}</h3>
-        </div>
-    </section>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
-    </script>
-    <script>
-        var navbar = document.querySelector('nav');
+@endsection
+@section('js')
+<script src="{{asset ('js/app.js')}}"></script>
 
 
 
 
-        window.onscroll = () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
+<script>
+    var navbar = document.querySelector('nav');
 
 
-            } else {
-                navbar.classList.remove('scrolled');
 
-            }
+
+    window.onscroll = () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+
+
+        } else {
+            navbar.classList.remove('scrolled');
+
         }
-    </script>
-</body>
-
-</html>
+    }
+</script>
+@endsection

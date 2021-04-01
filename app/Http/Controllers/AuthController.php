@@ -8,6 +8,7 @@ use App\Masyarakat;
 use App\Pengaduan;
 use App\Kecamatan;
 use App\Desa;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,15 +26,12 @@ class AuthController extends Controller
 
         return view('user.pengaduan', ['laporan' => $laporan,'kecamatan' => $kecamatan,'desa' => $desa]);
     }
-    
-    public function store(Request $request)
-    {
-        $desa = Desa::where('kode_kec', $request->get('kode'))
-            ->pluck('desa', 'kode_kec');
-    
-        return response()->json($desa);
-    }
 
+    public function GetSubCatAgainstMainCatEdit($id){
+        return response()->json(desa::where('id_provinsi', $id)->get());
+    }
+    
+    
     public function formLogin()
     {
         return view('auth.login');

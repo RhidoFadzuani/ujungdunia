@@ -21,7 +21,12 @@ class Tanggapan extends Model
     ];
 
 
-    public function petugas()
+    public function tugas()
+    {
+        return $this->hasOne('App\petugas', 'id_petugas', 'id_petugas');
+    }
+
+    public function tanggapan()
     {
         return $this->hasOne('App\petugas', 'id_petugas', 'id_petugas');
     }

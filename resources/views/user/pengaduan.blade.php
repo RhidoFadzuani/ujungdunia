@@ -62,27 +62,7 @@
                             <input placeholder="tanggal kejadian" type="date" class="form-control datepicker"
                                 name="tgl_kejadian">
                         </div>
-
-                        <div class="form-group">
-                            <label for="">kecamatan</label>
-                            <select class="custom-select" id="kecamatan" name="kecamatan">
-                                <option selected>kecamatan</option>
-                                @foreach ($kecamatan as $k => $v)
-                                <option value="{{$v->kode}}">{{ $v->kecamatan}}</option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="">Desa/Kelurahan</label>
-                            <select class="custom-select" id="desa" name="desa">
-                                <option selected>desa/kelurahan</option>
-                                @foreach ($desa as $d => $c)
-                                
-                                @endforeach
-                            </select>
-                        </div>
+                        <div id="combo-box" data-location="{{ route('location') }}"></div>
                         <div class="form-group">
                             <input type="file" name="foto" class="form-control" name="foto">
                         </div>
@@ -221,32 +201,6 @@
 
 @section('js')
 <script src="{{asset ('js/app.js')}}"></script>
-
-        
-    <script>
-                $(document).ready(function () {
-                $('#kecamatan').on('change', function () {
-                let id = $(this).val();
-                $('#desa').empty();
-                $('#desa').append(`<option value="0" disabled selected>Processing...</option>`);
-                $.ajax({
-                type: 'GET',
-                url: 'GetSubCatAgainstMainCatEdit/' + id,
-                success: function (response) {
-                var response = JSON.parse(response);
-                console.log(response);   
-                $('#desa').empty();
-                $('#desa').append(`<option value="0" disabled selected>Select Sub Category*</option>`);
-                response.forEach(element => {
-                    $('#desa').append(`<option value="${element['id']}">${element['nama']}</option>`);
-                    });
-                }
-            });
-        });
-    });
-    </script>
-
-
 
 <script>
     var navbar = document.querySelector('nav');

@@ -12,7 +12,6 @@ class Desa extends Model
 
     public function desa()
     {   
-        return $this->hasMany('App\kecamatan', 'id', 'kecamatan');
-    
+        return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
     }
 }

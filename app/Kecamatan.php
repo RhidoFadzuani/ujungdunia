@@ -11,7 +11,6 @@ class Kecamatan extends Model
 
     public function desa()
     {   
-        return $this->hasOne('App\Desa', 'id_provinsi', 'Desa');
-    
+        return $this->hasMany(Desa::class, 'id_kecamatan');
     }
 }
